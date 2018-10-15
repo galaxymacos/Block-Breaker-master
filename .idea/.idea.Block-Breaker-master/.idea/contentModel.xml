@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\galax\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\galax\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Block-Breaker-master.-1000443058.00" t="ExcludeRecursive" />
+    <e p="F:\Block-Breaker-master" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="GameManager.cs" t="Include" />
+        <e p="Plugins" t="Include">
+          <e p="GitHub" t="Include">
+            <e p="Editor" t="Include">
+              <e p="credits.txt" t="Include" />
+              <e p="eula.txt" t="Include" />
+              <e p="ExtensionLoader.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="BrickBehaviour.cs" t="Include" />
+          <e p="BrickMover.cs" t="Include" />
+          <e p="DuplicateBehavior.cs" t="Include" />
+          <e p="GreenMushroomBehavior.cs" t="Include" />
+          <e p="MoveBall.cs" t="Include" />
+          <e p="MovePaddle.cs" t="Include" />
+          <e p="RedMushroomBehavior.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Block-Breaker-master.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
