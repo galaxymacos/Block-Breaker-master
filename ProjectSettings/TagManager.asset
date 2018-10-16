@@ -8,6 +8,8 @@ TagManager:
   - paddle
   - level
   - ball
+  - powerup
+  - unbreakable
   layers:
   - Default
   - TransparentFX

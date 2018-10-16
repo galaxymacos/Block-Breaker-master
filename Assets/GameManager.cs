@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float protectionPanelMaxDuration = 15;
     private float protectionPanelDuration;
     
-    private bool isBig = false;
+    private bool isPaddleBig = false;
 
     private int bestScore = 0;
 
@@ -103,17 +103,42 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Replay the last level");
             }
 
-            var allBalls = GameObject.FindGameObjectsWithTag("ball");
-//            if (allBalls.Length > 1)
-//            {
-//                for (int i = 1; i < allBalls.Length; i++)
-//                {
-//                    Destroy(allBalls[i]);
-//                }
-//            }
+            
 //            print("ball destoryed");
+            ClearAllEffect();
             ballScript.Init();
             LoadLvl();
+        }
+    }
+
+    private void ClearAllEffect()
+    {
+        isFireBall = false;
+        ball.GetComponent<SpriteRenderer>().color = Color.white;
+        isPaddleBig = false;
+        DeletePowerUpsInScene();
+        protectionPanel.SetActive(false);
+        DeleteExtraBalls();
+    }
+
+    private static void DeletePowerUpsInScene()
+    {
+        var powerUps = GameObject.FindGameObjectsWithTag("powerup");
+        foreach (var powerUp in powerUps)
+        {
+            Destroy(powerUp);
+        }
+    }
+
+    private static void DeleteExtraBalls()
+    {
+        var allBalls = GameObject.FindGameObjectsWithTag("ball");
+        if (allBalls.Length > 1)
+        {
+            for (int i = 1; i < allBalls.Length; i++)
+            {
+                Destroy(allBalls[i]);
+            }
         }
     }
 
@@ -130,20 +155,21 @@ public class GameManager : MonoBehaviour
     public void MakePaddleLonger()
     {
         GetComponent<AudioSource>().Play();
-        if (!isBig)
+        if (!isPaddleBig)
         {
             var paddleSprite = player.GetComponent<SpriteRenderer>();
             var paddleCollider = player.GetComponent<BoxCollider2D>();
             paddleCollider.size += new Vector2(paddleCollider.size.x, 0);
             paddleSprite.size += new Vector2(paddleSprite.size.x, 0);
-            isBig = true;
+            isPaddleBig = true;
         }
     }
 
-  
+    public bool isFireBall;
     
     public void GetFireballEffect()
     {
+        isFireBall = true;
         GetComponent<AudioSource>().Play();
         var sr = ball.GetComponent<SpriteRenderer>();
         originalBallColor = sr.color;
@@ -151,6 +177,7 @@ public class GameManager : MonoBehaviour
         var childrenInCurLvl = GameObject.FindWithTag("level").GetComponentsInChildren(typeof(BoxCollider2D));
         foreach (BoxCollider2D component in childrenInCurLvl)
         {
+            if(!component.CompareTag("unbreakable"))
             component.isTrigger = true;
         }
         print("Fireball effect is ready");
@@ -162,14 +189,15 @@ public class GameManager : MonoBehaviour
         paddle.size -= new Vector2(paddle.size.x / 2, 0);
         var paddleCollider = player.GetComponent<BoxCollider2D>();
         paddleCollider.size += new Vector2(paddleCollider.size.x, 0);
-        isBig = false;
+        isPaddleBig = false;
         countDownTimer = 10f; // BUG restore timer to original
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isBig)
+        print(blocks);
+        if (isPaddleBig)
         {
             countDownTimer -= Time.deltaTime;
             if (countDownTimer <= 0.1f)
