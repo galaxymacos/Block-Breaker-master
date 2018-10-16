@@ -22,10 +22,13 @@ public class MoveBall : MonoBehaviour
 	[SerializeField] private float vForceMin = 0.6f;
 
 	[SerializeField] private float vForceMultiplier = 2f;
+
+	public bool isDupBall;
 	
 	// Use this for initialization
 	void Start ()
 	{
+		print("new ball is initialized");
 		code = GameObject.Find("GameManager").GetComponent<GameManager>();
 		ball = GetComponent<Rigidbody2D>();
 		ball.simulated = false;
@@ -45,7 +48,7 @@ public class MoveBall : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetButtonUp("Jump")&&!onlyOnce)
+		if ((Input.GetButtonUp("Jump")||isDupBall)&&!onlyOnce)
 		{
 			onlyOnce = true;
 			ball.simulated = true;
@@ -54,11 +57,23 @@ public class MoveBall : MonoBehaviour
 		}
 	}
 
+	public void initializeDuplicateBall()
+	{
+		isDupBall = true;
+	}
+
 	private void OnCollisionEnter2D(Collision2D other)
 	{
 		if (other.gameObject.CompareTag("death"))
 		{
-			code.Death();
+			if (GameObject.FindGameObjectsWithTag("ball").Length > 1)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				code.Death();				
+			}
 		}
 		
 		if (other.gameObject.CompareTag("paddle"))
@@ -97,4 +112,5 @@ public class MoveBall : MonoBehaviour
 			}
 		}
 	}
+
 }

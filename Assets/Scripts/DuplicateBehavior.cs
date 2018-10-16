@@ -8,6 +8,7 @@ public class DuplicateBehavior : MonoBehaviour
     private GameManager code;
     private GameObject ball;
     [SerializeField] private Transform copiedBall;
+    private bool isRunned;
 
     // Use this for initialization
     void Start()
@@ -24,16 +25,12 @@ public class DuplicateBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("paddle"))
+        GameObject.Find("GameManager").GetComponent<AudioSource>().Play();
+        if (other.gameObject.CompareTag("paddle")&&!isRunned)
         {
             var extraBall = Instantiate(ball, ball.transform,true);
-            var rig = extraBall.GetComponent<Rigidbody2D>();
-            rig.simulated = true;
-            rig.transform.parent = null;
-//            Instantiate(copiedBall, ball.transform.position, Quaternion.identity);
-//            copiedBall.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(150,150));
-            rig.AddForce(new Vector2(150, 150));
-            print("force added");
+            MoveBall moveBall = extraBall.GetComponent<MoveBall>();
+            moveBall.initializeDuplicateBall();
             Destroy(gameObject);
         }
 

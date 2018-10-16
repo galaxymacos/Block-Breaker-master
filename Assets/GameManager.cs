@@ -34,8 +34,13 @@ public class GameManager : MonoBehaviour
 
     private int bestScore = 0;
 
+    private Color originalBallColor = Color.white;
+    
+
     void LoadLvl()
     {
+        
+        ball.GetComponent<SpriteRenderer>().color = originalBallColor;
         if (currBoard)
         {
             Destroy(currBoard);
@@ -52,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
+        
         lives--;
         if (lives > 0)
         {
@@ -97,6 +103,15 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Replay the last level");
             }
 
+            var allBalls = GameObject.FindGameObjectsWithTag("ball");
+//            if (allBalls.Length > 1)
+//            {
+//                for (int i = 1; i < allBalls.Length; i++)
+//                {
+//                    Destroy(allBalls[i]);
+//                }
+//            }
+//            print("ball destoryed");
             ballScript.Init();
             LoadLvl();
         }
@@ -114,6 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void MakePaddleLonger()
     {
+        GetComponent<AudioSource>().Play();
         if (!isBig)
         {
             var paddleSprite = player.GetComponent<SpriteRenderer>();
@@ -128,8 +144,16 @@ public class GameManager : MonoBehaviour
     
     public void GetFireballEffect()
     {
+        GetComponent<AudioSource>().Play();
         var sr = ball.GetComponent<SpriteRenderer>();
+        originalBallColor = sr.color;
         sr.color = Color.red;
+        var childrenInCurLvl = GameObject.FindWithTag("level").GetComponentsInChildren(typeof(BoxCollider2D));
+        foreach (BoxCollider2D component in childrenInCurLvl)
+        {
+            component.isTrigger = true;
+        }
+        print("Fireball effect is ready");
     }
 
     public void ResetSize()
