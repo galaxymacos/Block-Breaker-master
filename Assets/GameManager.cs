@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int lives = 3;
 
-    [FormerlySerializedAs("ball")] [SerializeField] private MoveBall ballScript; // Script is a class in Unity
-    [SerializeField] private GameObject btnRetry;
-    [SerializeField] private GameObject btnExit;
+    [FormerlySerializedAs("ball")] [SerializeField]
+    private MoveBall ballScript; // Script is a class in Unity
+
+    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject pauseScreen;
 
     private int point = 0;
     [SerializeField] private Text score;
@@ -29,17 +31,18 @@ public class GameManager : MonoBehaviour
     private GameObject protectionPanel;
     [SerializeField] private float protectionPanelMaxDuration = 15;
     private float protectionPanelDuration;
-    
+
     private bool isPaddleBig = false;
 
     private int bestScore = 0;
+    [SerializeField] private int maxFireballBullets = 3;
+    private int fireballBulletLeft = 0;
 
     private Color originalBallColor = Color.white;
-    
+
 
     void LoadLvl()
     {
-        
         ball.GetComponent<SpriteRenderer>().color = originalBallColor;
         if (currBoard)
         {
@@ -57,7 +60,6 @@ public class GameManager : MonoBehaviour
 
     public void Death()
     {
-        
         lives--;
         if (lives > 0)
         {
@@ -74,8 +76,7 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.Save();
             }
 
-            btnRetry.SetActive(true);
-            btnExit.SetActive(true);
+            gameOverScreen.SetActive(true);
         }
     }
 
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Replay the last level");
             }
 
-            
+
 //            print("ball destoryed");
             ClearAllEffect();
             ballScript.Init();
@@ -114,11 +115,13 @@ public class GameManager : MonoBehaviour
     private void ClearAllEffect()
     {
         isFireBall = false;
-        ball.GetComponent<SpriteRenderer>().color = Color.white;
-        isPaddleBig = false;
+        DeleteExtraBalls();
+        var theOnlyBall = GameObject.FindGameObjectWithTag("ball");
+        theOnlyBall.GetComponent<SpriteRenderer>().color = Color.white;
+        if (isPaddleBig)
+            ResetPaddleSize();
         DeletePowerUpsInScene();
         protectionPanel.SetActive(false);
-        DeleteExtraBalls();
     }
 
     private static void DeletePowerUpsInScene()
@@ -166,24 +169,44 @@ public class GameManager : MonoBehaviour
     }
 
     public bool isFireBall;
-    
+
     public void GetFireballEffect()
     {
         isFireBall = true;
+        fireballBulletLeft = maxFireballBullets;
         GetComponent<AudioSource>().Play();
-        var sr = ball.GetComponent<SpriteRenderer>();
-        originalBallColor = sr.color;
-        sr.color = Color.red;
+        foreach (var b in GameObject.FindGameObjectsWithTag("ball"))
+        {
+            var sr = b.GetComponent<SpriteRenderer>();
+            sr.color = Color.red;
+        }
+
         var childrenInCurLvl = GameObject.FindWithTag("level").GetComponentsInChildren(typeof(BoxCollider2D));
         foreach (BoxCollider2D component in childrenInCurLvl)
         {
-            if(!component.CompareTag("unbreakable"))
-            component.isTrigger = true;
+            if (!component.CompareTag("unbreakable"))
+                component.isTrigger = true;
         }
-        print("Fireball effect is ready");
     }
 
-    public void ResetSize()
+    public void ResetFireballEffect()
+    {
+        isFireBall = false;
+        foreach (var b in GameObject.FindGameObjectsWithTag("ball"))
+        {
+            var sr = b.GetComponent<SpriteRenderer>();
+            sr.color = Color.white;
+        }
+
+        var childrenInCurLvl = GameObject.FindWithTag("level").GetComponentsInChildren(typeof(BoxCollider2D));
+        foreach (BoxCollider2D component in childrenInCurLvl)
+        {
+            if (!component.CompareTag("unbreakable"))
+                component.isTrigger = false;
+        }
+    }
+
+    public void ResetPaddleSize()
     {
         var paddle = player.GetComponent<SpriteRenderer>();
         paddle.size -= new Vector2(paddle.size.x / 2, 0);
@@ -196,13 +219,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(blocks);
         if (isPaddleBig)
         {
             countDownTimer -= Time.deltaTime;
             if (countDownTimer <= 0.1f)
             {
-                ResetSize();
+                ResetPaddleSize();
             }
         }
 
@@ -214,18 +236,31 @@ public class GameManager : MonoBehaviour
                 protectionPanel.SetActive(false);
             }
         }
-        
-        
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            print("game paused");
+            PauseGame();
+        }
     }
 
     public void Quit()
     {
         Application.Quit();
     }
-    
+
+    public void StartOver()
+    {
+        ClearAllEffect();
+        GameObject curLvl = GameObject.FindWithTag("level");
+        Destroy(curLvl);
+        ballScript.Init();
+        LoadLvl();
+    }
+
     public void Retry()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene("MainGame");
 //        currLvl = 0;
 //        LoadLvl();
 //        ball.Init();
@@ -234,14 +269,36 @@ public class GameManager : MonoBehaviour
 //        btnRetry.SetActive(false);
     }
 
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     public void SpawnProtectionPanel()
     {
         protectionPanel.SetActive(true);
         protectionPanelDuration = protectionPanelMaxDuration;
     }
-    
-    
-    
-    
-    
+
+    public void ConsumeFireBall()
+    {
+        fireballBulletLeft--;
+        if (fireballBulletLeft == 0)
+        {
+            ResetFireballEffect();
+        }
+    }
+
+    private float timeScaleInGame = 1.0f;
+    public void PauseGame()
+    {
+        timeScaleInGame = Time.timeScale;
+        Time.timeScale = 0;
+        pauseScreen.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = timeScaleInGame;
+    }
 }

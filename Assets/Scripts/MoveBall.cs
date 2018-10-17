@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using UnityEditor;
 using UnityEngine;
 
 public class MoveBall : MonoBehaviour
@@ -57,10 +58,6 @@ public class MoveBall : MonoBehaviour
 		}
 	}
 
-	public void initializeDuplicateBall()
-	{
-		isDupBall = true;
-	}
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
@@ -78,6 +75,12 @@ public class MoveBall : MonoBehaviour
 		
 		if (other.gameObject.CompareTag("paddle"))
 		{
+			if (code.isFireBall)
+			{
+//				EditorApplication.isPaused = true;
+				code.ConsumeFireBall();
+			}
+
 			Time.timeScale *= 1.005f;	// increase difficulty
 										// TODO slow down paddle speed
 			float diffX = transform.position.x - other.transform.position.x;

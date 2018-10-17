@@ -29,10 +29,9 @@ public class DuplicateBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("paddle")&&!isRunned)
         {
             isRunned = true;
-            print("create a bew ball");
             var extraBall = Instantiate(ball, ball.transform,true);
             MoveBall moveBall = extraBall.GetComponent<MoveBall>();
-            moveBall.initializeDuplicateBall();
+            moveBall.isDupBall = true;
             Destroy(gameObject);
         }
 
