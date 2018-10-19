@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4999726676094250}
   - component: {fileID: 212032196554494628}
   - component: {fileID: 61622367189457642}
+  - component: {fileID: 114559738741106092}
   m_Layer: 0
   m_Name: Unbreakable Brick
-  m_TagString: Untagged
+  m_TagString: unbreakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.64, y: 0.57}
   m_EdgeRadius: 0
+--- !u!114 &114559738741106092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297809780676802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212032196554494628
 SpriteRenderer:
   m_ObjectHideFlags: 1

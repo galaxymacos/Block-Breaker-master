@@ -18,9 +18,11 @@ public class MoveBall : MonoBehaviour
 
 	private Vector3 initPos;
 
-	[SerializeField] private float paddleDirBlindSpot = 1.5f;
+//	[SerializeField] private float paddleDirBlindSpot = 1.5f;
+    [SerializeField] private float deflectionFactor = 1.5f;
 
-	[SerializeField] private float vForceMin = 0.6f;
+    [SerializeField] private float vForceMinX = 0.3f;
+    [SerializeField] private float vForceMinY = 0.6f;
 
 	[SerializeField] private float vForceMultiplier = 2f;
 
@@ -29,7 +31,6 @@ public class MoveBall : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		print("new ball is initialized");
 		code = GameObject.Find("GameManager").GetComponent<GameManager>();
 		ball = GetComponent<Rigidbody2D>();
 		ball.simulated = false;
@@ -73,8 +74,9 @@ public class MoveBall : MonoBehaviour
 			}
 		}
 		
-		if (other.gameObject.CompareTag("paddle"))
+		else if (other.gameObject.CompareTag("paddle"))
 		{
+		    float paddleSize = other.gameObject.GetComponent<BoxCollider2D>().size.x;
 			if (code.isFireBall)
 			{
 //				EditorApplication.isPaused = true;
@@ -84,36 +86,41 @@ public class MoveBall : MonoBehaviour
 			Time.timeScale *= 1.005f;	// increase difficulty
 										// TODO slow down paddle speed
 			float diffX = transform.position.x - other.transform.position.x;
-			if (diffX > paddleDirBlindSpot)
-			{
+            Debug.Log(diffX);
+//			if (diffX > 0)
+//			{
 				// Right side of the paddle
 				ball.velocity = new Vector2(0, 0);
-				ball.AddForce(new Vector2(dir,dir));
-			}
-
-			if (diffX < paddleDirBlindSpot)
-			{
-				// Left side of the paddle
-				ball.velocity = new Vector2(0, 0);
-				ball.AddForce(new Vector2(-dir,dir));
-			}
+				ball.AddForce(new Vector2(deflectionFactor*diffX/(paddleSize/2)*dir,dir));
+//			}
+//
+//			if (diffX < 0)
+//			{
+//				// Left side of the paddle
+//                print("Hit the left side of the paddle");
+//				ball.velocity = new Vector2(0, 0);
+//				ball.AddForce(new Vector2(diffX/(paddleSize/2)*dir,dir));
+//			}
 		}
+		
 	}
 
 	private void OnCollisionExit2D(Collision2D other)
 	{
-		if (Mathf.Abs(ball.velocity.y)<vForceMin)
+		if (Mathf.Abs(ball.velocity.y)<vForceMinY)
 		{
 			float velX = ball.velocity.x;
 			if (ball.velocity.y < 0)
 			{
-				ball.velocity = new Vector2(velX,-vForceMin*vForceMultiplier);
+				ball.velocity = new Vector2(velX,-vForceMinY*vForceMultiplier);
 			}
 			else
 			{
-				ball.velocity = new Vector2(velX,vForceMin*vForceMultiplier);
+				ball.velocity = new Vector2(velX,vForceMinY*vForceMultiplier);
 			}
 		}
+
+	    
 	}
 
 }

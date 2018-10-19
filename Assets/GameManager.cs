@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.SocialPlatforms.Impl;
@@ -39,6 +40,13 @@ public class GameManager : MonoBehaviour
     private int fireballBulletLeft = 0;
 
     private Color originalBallColor = Color.white;
+
+    [SerializeField] private AudioSource ding;
+    [SerializeField] private AudioSource blockbreak;
+    [SerializeField] private AudioSource explosion;
+    [SerializeField] private AudioMixer audioM;
+
+
 
 
     void LoadLvl()
@@ -240,6 +248,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             print("game paused");
+            
             PauseGame();
         }
     }
@@ -292,6 +301,7 @@ public class GameManager : MonoBehaviour
     private float timeScaleInGame = 1.0f;
     public void PauseGame()
     {
+        audioM.SetFloat("volPause", 700);
         timeScaleInGame = Time.timeScale;
         Time.timeScale = 0;
         pauseScreen.SetActive(true);
@@ -299,6 +309,29 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        audioM.SetFloat("volPause", 22000);
         Time.timeScale = timeScaleInGame;
+    }
+
+    private float gameWidth = 5f;
+
+    public void PlayDingSound(float soundPosition)
+    {
+        ding.panStereo = soundPosition / (gameWidth / 2);
+        ding.Play();
+    }
+
+    public void PlayBlockBreakSound(float soundPosition)
+    {
+        blockbreak.panStereo = soundPosition / (gameWidth / 2);
+
+        blockbreak.Play();
+    }
+
+    public void PlayExplosionSound(float soundPosition)
+    {
+        explosion.panStereo = soundPosition / (gameWidth / 2);
+
+        explosion.Play();
     }
 }

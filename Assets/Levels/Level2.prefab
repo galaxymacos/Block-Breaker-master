@@ -147,9 +147,10 @@ GameObject:
   - component: {fileID: 4372186570325982}
   - component: {fileID: 212392687488055754}
   - component: {fileID: 61102235168212010}
+  - component: {fileID: 114116352034095100}
   m_Layer: 0
   m_Name: Unbreakable Brick (3)
-  m_TagString: Untagged
+  m_TagString: unbreakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,9 +216,10 @@ GameObject:
   - component: {fileID: 4577788750083654}
   - component: {fileID: 212371940128300246}
   - component: {fileID: 61754089630892302}
+  - component: {fileID: 114269637490148688}
   m_Layer: 0
   m_Name: Unbreakable Brick
-  m_TagString: Untagged
+  m_TagString: unbreakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,9 +234,10 @@ GameObject:
   - component: {fileID: 4272109612043632}
   - component: {fileID: 212604584420492992}
   - component: {fileID: 61480263626576108}
+  - component: {fileID: 114467736344552538}
   m_Layer: 0
   m_Name: Unbreakable Brick (1)
-  m_TagString: Untagged
+  m_TagString: unbreakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,9 +270,10 @@ GameObject:
   - component: {fileID: 4577525926314116}
   - component: {fileID: 212919471782708700}
   - component: {fileID: 61814308136928790}
+  - component: {fileID: 114772145112141682}
   m_Layer: 0
   m_Name: Unbreakable Brick (2)
-  m_TagString: Untagged
+  m_TagString: unbreakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,9 +288,10 @@ GameObject:
   - component: {fileID: 4959391896847342}
   - component: {fileID: 212243032825990840}
   - component: {fileID: 61889143351608086}
+  - component: {fileID: 114546508034545140}
   m_Layer: 0
   m_Name: Unbreakable Brick (4)
-  m_TagString: Untagged
+  m_TagString: unbreakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -906,7 +911,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114116352034095100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1399120147962474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114127553472938800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,7 +940,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!114 &114266981444632998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -942,7 +958,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114269637490148688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573817957978196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114384961906753712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -960,7 +987,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!114 &114457066324776728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -978,7 +1005,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114467736344552538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581715660191782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114478544058065842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -996,7 +1034,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114546508034545140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886927209084686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114603655824149554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1014,7 +1063,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!114 &114637753613562148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1032,7 +1081,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!114 &114689693286392682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1050,7 +1099,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!114 &114763279730469820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1068,7 +1117,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114772145112141682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846241229098610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212004289668607214
 SpriteRenderer:
   m_ObjectHideFlags: 1

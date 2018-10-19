@@ -10,6 +10,7 @@ TagManager:
   - ball
   - powerup
   - unbreakable
+  - scene
   layers:
   - Default
   - TransparentFX

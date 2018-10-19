@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4663876156380370}
   - component: {fileID: 212730601479144162}
   - component: {fileID: 61148235551002588}
+  - component: {fileID: 114308110704391750}
   m_Layer: 0
   m_Name: Unbreakable Brick (1)
   m_TagString: unbreakable
@@ -89,6 +90,7 @@ GameObject:
   - component: {fileID: 4299586158342884}
   - component: {fileID: 212477320121518072}
   - component: {fileID: 61699148518976560}
+  - component: {fileID: 114691407080524524}
   m_Layer: 0
   m_Name: Unbreakable Brick (2)
   m_TagString: unbreakable
@@ -106,6 +108,7 @@ GameObject:
   - component: {fileID: 4574063850118528}
   - component: {fileID: 212631371336950376}
   - component: {fileID: 61020841276835278}
+  - component: {fileID: 114538634157180714}
   m_Layer: 0
   m_Name: Unbreakable Brick (3)
   m_TagString: unbreakable
@@ -123,6 +126,7 @@ GameObject:
   - component: {fileID: 4727321370959926}
   - component: {fileID: 212523042729124950}
   - component: {fileID: 61239623615325300}
+  - component: {fileID: 114957614819996144}
   m_Layer: 0
   m_Name: Unbreakable Brick
   m_TagString: unbreakable
@@ -565,7 +569,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 100
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114308110704391750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186831064228112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114536377829013936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -583,7 +598,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114538634157180714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653696772202258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114608176916256650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -601,7 +627,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!114 &114668342676085796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -619,7 +645,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114691407080524524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643943105607040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114728099200855084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -637,7 +674,18 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
+--- !u!114 &114957614819996144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735817229526676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce7d51e95ad5947a21a51a0fa1cfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212477320121518072
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -674,7 +722,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: c4e9032a9dcd7c2499d8cba04c03f821, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -720,7 +768,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: c4e9032a9dcd7c2499d8cba04c03f821, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -812,7 +860,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: c4e9032a9dcd7c2499d8cba04c03f821, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -950,7 +998,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: c4e9032a9dcd7c2499d8cba04c03f821, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

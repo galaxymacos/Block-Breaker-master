@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: 1144415396723640, guid: 2956d9905a62a67448d26c0253c9860c, type: 2}
   - {fileID: 1554693797339256, guid: 9c44785fba345814c9d40d644ec825b5, type: 2}
   PowerUPPercentage: 20
-  blockLives: 1
+  blockHp: 1
 --- !u!212 &212032196554494628
 SpriteRenderer:
   m_ObjectHideFlags: 1
