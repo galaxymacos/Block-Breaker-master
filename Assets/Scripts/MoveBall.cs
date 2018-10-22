@@ -50,7 +50,7 @@ public class MoveBall : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if ((Input.GetButtonUp("Jump")||isDupBall)&&!onlyOnce)
+		if ((Input.GetButtonUp("Jump")||isDupBall)&&!onlyOnce&&code.inGame)
 		{
 			onlyOnce = true;
 			ball.simulated = true;
