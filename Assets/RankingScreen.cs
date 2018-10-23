@@ -33,7 +33,7 @@ public class RankingScreen : MonoBehaviour {
         
     }
 
-    public void uploadPlayerScore() {
+    public void UploadPlayerScore() {
         var playerScore = new GameManager.PlayerInfo {Name = playerName.text, Score = code.point};
         int index = code.playersInfo.Length - 1;
         if (code.playersInfo[index].Score > code.point) {

@@ -46,6 +46,8 @@ public class MoveBall : MonoBehaviour
 		ball.velocity = new Vector2(0,0);
 		onlyOnce = false;
 	}
+
+	private Vector2 velocityCacheEachHit;
 	
 	// Update is called once per frame
 	void Update ()
@@ -56,7 +58,12 @@ public class MoveBall : MonoBehaviour
 			ball.simulated = true;
 			ball.transform.parent = null;
 			ball.AddForce(new Vector2(dir, dir));
+			velocityCacheEachHit = ball.velocity;
 		}
+		
+		// Bug the bug, but performance is so bad
+		velocityCacheEachHit = ball.velocity;
+		Debug.Log(velocityCacheEachHit.x+" "+velocityCacheEachHit.y);
 	}
 
 
@@ -86,7 +93,6 @@ public class MoveBall : MonoBehaviour
 			Time.timeScale *= 1.005f;	// increase difficulty
 										// TODO slow down paddle speed
 			float diffX = transform.position.x - other.transform.position.x;
-            Debug.Log(diffX);
 //			if (diffX > 0)
 //			{
 				// Right side of the paddle
@@ -102,6 +108,15 @@ public class MoveBall : MonoBehaviour
 //				ball.AddForce(new Vector2(diffX/(paddleSize/2)*dir,dir));
 //			}
 		}
+		else if (other.gameObject.CompareTag("scene")) {
+			if (Mathf.Abs(ball.velocity.x) < vForceMinX) {
+				ball.velocity = new Vector2(-velocityCacheEachHit.x,velocityCacheEachHit.y);
+			}
+		}
+		
+		
+
+
 		
 	}
 
@@ -119,7 +134,7 @@ public class MoveBall : MonoBehaviour
 				ball.velocity = new Vector2(velX,vForceMinY*vForceMultiplier);
 			}
 		}
-
+		
 	    
 	}
 
